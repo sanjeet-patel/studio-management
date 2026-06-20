@@ -8,7 +8,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- ── Platform Tables ──────────────────────────────────────────────────────────
 
 CREATE TABLE tenants (
-  id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name            TEXT NOT NULL,
   slug            TEXT NOT NULL UNIQUE,
   tagline         TEXT,
@@ -41,7 +41,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE subscriptions (
-  id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id   UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   plan        TEXT NOT NULL DEFAULT 'basic',
   starts_at   TIMESTAMPTZ,
@@ -55,7 +55,7 @@ CREATE TABLE subscriptions (
 -- ── Customers ─────────────────────────────────────────────────────────────────
 
 CREATE TABLE customers (
-  id             UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id      UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   customer_name  TEXT NOT NULL,
   studio_name    TEXT,
@@ -72,14 +72,14 @@ CREATE TABLE customers (
 -- ── Product / Catalog Legacy (kept for compatibility) ─────────────────────────
 
 CREATE TABLE product_categories (
-  id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id   UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   name        TEXT NOT NULL,
   created_at  TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE TABLE products (
-  id           UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id    UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   category_id  UUID REFERENCES product_categories(id) ON DELETE SET NULL,
   name         TEXT NOT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE products (
 );
 
 CREATE TABLE addons (
-  id           UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id    UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   name         TEXT NOT NULL,
   pricing_type TEXT NOT NULL DEFAULT 'flat' CHECK (pricing_type IN ('flat','per_qty')),
@@ -100,7 +100,7 @@ CREATE TABLE addons (
 -- ── Domain Catalog (Photo / Cover / Accessories) ──────────────────────────────
 
 CREATE TABLE sizes (
-  id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id   UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   name        TEXT NOT NULL,
   sort_order  INT DEFAULT 0,
@@ -109,7 +109,7 @@ CREATE TABLE sizes (
 );
 
 CREATE TABLE paper_types (
-  id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id       UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   name            TEXT NOT NULL,
   supports_velvet BOOLEAN NOT NULL DEFAULT FALSE,
@@ -119,7 +119,7 @@ CREATE TABLE paper_types (
 );
 
 CREATE TABLE cover_types (
-  id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id   UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   name        TEXT NOT NULL,
   sort_order  INT DEFAULT 0,
@@ -128,7 +128,7 @@ CREATE TABLE cover_types (
 );
 
 CREATE TABLE accessories (
-  id                   UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id                   UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id            UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   name                 TEXT NOT NULL,
   default_price        NUMERIC(10,2) NOT NULL DEFAULT 0,
@@ -139,7 +139,7 @@ CREATE TABLE accessories (
 );
 
 CREATE TABLE photo_pricing (
-  id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id     UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   size_id       UUID NOT NULL REFERENCES sizes(id) ON DELETE CASCADE,
   paper_type_id UUID NOT NULL REFERENCES paper_types(id) ON DELETE CASCADE,
@@ -151,7 +151,7 @@ CREATE TABLE photo_pricing (
 );
 
 CREATE TABLE cover_pricing (
-  id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id     UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   size_id       UUID NOT NULL REFERENCES sizes(id) ON DELETE CASCADE,
   cover_type_id UUID NOT NULL REFERENCES cover_types(id) ON DELETE CASCADE,
@@ -163,7 +163,7 @@ CREATE TABLE cover_pricing (
 );
 
 CREATE TABLE velvet_rates (
-  id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id   UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   rate        NUMERIC(10,2) NOT NULL DEFAULT 10,
   created_at  TIMESTAMPTZ DEFAULT NOW(),
@@ -173,7 +173,7 @@ CREATE TABLE velvet_rates (
 -- ── Orders ────────────────────────────────────────────────────────────────────
 
 CREATE TABLE orders (
-  id             UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id      UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   order_no       TEXT NOT NULL,
   order_type     TEXT,
@@ -194,7 +194,7 @@ CREATE TABLE orders (
 );
 
 CREATE TABLE order_items (
-  id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   order_id      UUID NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
   item_type     TEXT NOT NULL DEFAULT 'PHOTO' CHECK (item_type IN ('PHOTO','COVER','ACCESSORY')),
   product_id    UUID REFERENCES products(id) ON DELETE SET NULL,
@@ -212,7 +212,7 @@ CREATE TABLE order_items (
 );
 
 CREATE TABLE payments (
-  id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id       UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   order_id        UUID NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
   payment_date    DATE NOT NULL DEFAULT CURRENT_DATE,
@@ -225,7 +225,7 @@ CREATE TABLE payments (
 -- ── Employees & Salaries ──────────────────────────────────────────────────────
 
 CREATE TABLE employees (
-  id               UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id        UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   employee_name    TEXT NOT NULL,
   mobile           TEXT,
@@ -238,7 +238,7 @@ CREATE TABLE employees (
 );
 
 CREATE TABLE salary_cycles (
-  id             UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   employee_id    UUID NOT NULL REFERENCES employees(id) ON DELETE CASCADE,
   month_year     TEXT NOT NULL,
   salary_amount  NUMERIC(10,2) NOT NULL,
@@ -249,7 +249,7 @@ CREATE TABLE salary_cycles (
 );
 
 CREATE TABLE salary_adjustments (
-  id               UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   salary_cycle_id  UUID NOT NULL REFERENCES salary_cycles(id) ON DELETE CASCADE,
   type             TEXT NOT NULL CHECK (type IN ('addition','deduction')),
   reason           TEXT NOT NULL,
@@ -258,7 +258,7 @@ CREATE TABLE salary_adjustments (
 );
 
 CREATE TABLE salary_payments (
-  id               UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   salary_cycle_id  UUID NOT NULL REFERENCES salary_cycles(id) ON DELETE CASCADE,
   payment_date     DATE NOT NULL DEFAULT CURRENT_DATE,
   amount           NUMERIC(10,2) NOT NULL,
@@ -269,7 +269,7 @@ CREATE TABLE salary_payments (
 -- ── Recurring Bills ───────────────────────────────────────────────────────────
 
 CREATE TABLE recurring_bills (
-  id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id   UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   name        TEXT NOT NULL,
   amount      NUMERIC(10,2) NOT NULL,
@@ -282,7 +282,7 @@ CREATE TABLE recurring_bills (
 );
 
 CREATE TABLE bill_instances (
-  id                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   recurring_bill_id UUID NOT NULL REFERENCES recurring_bills(id) ON DELETE CASCADE,
   month_year        TEXT NOT NULL,
   amount            NUMERIC(10,2) NOT NULL,
@@ -293,7 +293,7 @@ CREATE TABLE bill_instances (
 );
 
 CREATE TABLE bill_payments (
-  id               UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   bill_instance_id UUID NOT NULL REFERENCES bill_instances(id) ON DELETE CASCADE,
   payment_date     DATE NOT NULL DEFAULT CURRENT_DATE,
   amount           NUMERIC(10,2) NOT NULL,
@@ -304,14 +304,14 @@ CREATE TABLE bill_payments (
 -- ── Expenses ─────────────────────────────────────────────────────────────────
 
 CREATE TABLE expense_categories (
-  id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id   UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   name        TEXT NOT NULL,
   created_at  TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE TABLE expenses (
-  id           UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id    UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
   category_id  UUID REFERENCES expense_categories(id) ON DELETE SET NULL,
   expense_date DATE NOT NULL DEFAULT CURRENT_DATE,
