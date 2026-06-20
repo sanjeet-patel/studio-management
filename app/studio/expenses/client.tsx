@@ -23,12 +23,12 @@ export function ExpensesClient({ expenses, categories, currentMonth }: { expense
         <div className="flex gap-2 items-center">
           <Input type="month" value={month} onChange={(e) => setMonth(e.target.value)} className="h-9 text-sm w-36" />
           <Button variant="outline" size="sm" onClick={() => router.push(`/studio/expenses?month=${month}`)}>View</Button>
-          <Button className="bg-indigo-600 hover:bg-indigo-700" onClick={() => setAdding(!adding)}><Plus className="h-4 w-4 mr-2" />Add</Button>
+          <Button className="bg-teal-600 hover:bg-teal-700" onClick={() => setAdding(!adding)}><Plus className="h-4 w-4 mr-2" />Add</Button>
         </div>
       </div>
 
       {adding && (
-        <Card className="border-0 shadow-sm mb-4 bg-indigo-50">
+        <Card className="border-0 shadow-sm mb-4 bg-teal-50">
           <CardContent className="pt-4">
             <form onSubmit={async (e) => {
               e.preventDefault();
@@ -53,7 +53,7 @@ export function ExpensesClient({ expenses, categories, currentMonth }: { expense
               </div>
               <div className="col-span-full"><Label className="text-xs">Remarks</Label><Input name="remarks" className="mt-1 h-8 text-sm" /></div>
               <div className="col-span-full flex gap-2">
-                <Button type="submit" size="sm" className="bg-indigo-600">Save</Button>
+                <Button type="submit" size="sm" className="bg-teal-600">Save</Button>
                 <Button type="button" size="sm" variant="ghost" onClick={() => setAdding(false)}>Cancel</Button>
               </div>
             </form>

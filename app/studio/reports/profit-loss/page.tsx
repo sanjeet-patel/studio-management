@@ -12,7 +12,7 @@ export default async function ProfitLossPage({ searchParams }: { searchParams: P
         <h1 className="text-2xl font-bold text-slate-800">Profit & Loss</h1>
         <form className="flex gap-2">
           <input type="month" name="month" defaultValue={currentMonth} className="border rounded-lg px-3 py-1.5 text-sm" />
-          <button type="submit" className="bg-indigo-600 text-white rounded-lg px-3 py-1.5 text-sm">View</button>
+          <button type="submit" className="bg-teal-600 text-white rounded-lg px-3 py-1.5 text-sm">View</button>
         </form>
       </div>
 
@@ -29,9 +29,9 @@ export default async function ProfitLossPage({ searchParams }: { searchParams: P
             <p className="text-2xl font-bold text-red-700">₹{data.totalExpenses.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</p>
           </CardContent>
         </Card>
-        <Card className={`border-0 shadow-sm ${data.netProfit >= 0 ? "bg-indigo-50" : "bg-orange-50"}`}>
+        <Card className={`border-0 shadow-sm ${data.netProfit >= 0 ? "bg-teal-50" : "bg-orange-50"}`}>
           <CardContent className="pt-5">
-            <p className={`text-xs font-medium uppercase tracking-wide mb-1 ${data.netProfit >= 0 ? "text-indigo-600" : "text-orange-600"}`}>Net Profit</p>
+            <p className={`text-xs font-medium uppercase tracking-wide mb-1 ${data.netProfit >= 0 ? "text-teal-600" : "text-orange-600"}`}>Net Profit</p>
             <p className={`text-2xl font-bold ${data.netProfit >= 0 ? "text-indigo-700" : "text-orange-700"}`}>₹{data.netProfit.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</p>
           </CardContent>
         </Card>
@@ -72,11 +72,11 @@ export default async function ProfitLossPage({ searchParams }: { searchParams: P
               <td className="px-4 py-3 text-right text-red-700">₹{data.totalExpenses.toFixed(2)}</td>
               <td className="px-4 py-3"></td>
             </tr>
-            <tr className={`font-bold ${data.netProfit >= 0 ? "bg-indigo-50" : "bg-orange-50"}`}>
+            <tr className={`font-bold ${data.netProfit >= 0 ? "bg-teal-50" : "bg-orange-50"}`}>
               <td className={`px-4 py-3 ${data.netProfit >= 0 ? "text-indigo-700" : "text-orange-700"}`}>Net Profit / Loss</td>
               <td className={`px-4 py-3 text-right text-lg ${data.netProfit >= 0 ? "text-indigo-700" : "text-orange-700"}`}>₹{data.netProfit.toFixed(2)}</td>
               <td className="px-4 py-3">
-                <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${data.netProfit >= 0 ? "bg-indigo-100 text-indigo-700" : "bg-orange-100 text-orange-700"}`}>
+                <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${data.netProfit >= 0 ? "bg-teal-50 text-indigo-700" : "bg-orange-100 text-orange-700"}`}>
                   {data.netProfit >= 0 ? "Profit" : "Loss"}
                 </span>
               </td>

@@ -49,7 +49,7 @@ export function EditCustomerForm({ customer }: { customer: Customer }) {
               <div><Label>Address</Label><Input name="address" defaultValue={customer.address ?? ""} className="mt-1" /></div>
             </div>
             <div><Label>Notes</Label><Textarea name="notes" defaultValue={customer.notes ?? ""} className="mt-1" rows={2} /></div>
-            <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700" disabled={loading}>{loading ? "Saving…" : "Update Customer"}</Button>
+            <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700" disabled={loading}>{loading ? "Saving…" : "Update Customer"}</Button>
           </form>
         </CardContent>
       </Card>

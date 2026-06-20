@@ -25,7 +25,7 @@ export default async function TenantsPage({
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-slate-800">Studios</h1>
         <Link href="/admin/tenants/new">
-          <Button className="bg-indigo-600 hover:bg-indigo-700">
+          <Button className="bg-teal-600 hover:bg-teal-700">
             <Plus className="h-4 w-4 mr-2" />New Studio
           </Button>
         </Link>
@@ -37,7 +37,7 @@ export default async function TenantsPage({
           name="search"
           defaultValue={search}
           placeholder="Search studio name..."
-          className="border rounded-lg px-3 py-1.5 text-sm w-60 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="border rounded-lg px-3 py-1.5 text-sm w-60 focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
         <select
           name="status"
@@ -72,7 +72,7 @@ export default async function TenantsPage({
             {tenants?.map((t) => (
               <tr key={t.id} className="hover:bg-slate-50">
                 <td className="px-4 py-3 font-medium">
-                  <Link href={`/admin/tenants/${t.id}`} className="text-indigo-600 hover:underline">
+                  <Link href={`/admin/tenants/${t.id}`} className="text-teal-600 hover:underline">
                     {t.name}
                   </Link>
                 </td>

@@ -94,7 +94,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                   <tr><td colSpan={3} className="px-4 py-2 text-right text-slate-600">Subtotal</td><td className="px-4 py-2 text-right font-semibold">₹{Number(order.subtotal).toFixed(2)}</td></tr>
                   {Number(order.discount) > 0 && <tr><td colSpan={3} className="px-4 py-2 text-right text-slate-600">Discount</td><td className="px-4 py-2 text-right text-red-600">−₹{Number(order.discount).toFixed(2)}</td></tr>}
                   {Number(order.tax_percent) > 0 && <tr><td colSpan={3} className="px-4 py-2 text-right text-slate-600">Tax ({order.tax_percent}%)</td><td className="px-4 py-2 text-right">₹{(Number(order.grand_total) - (Number(order.subtotal) - Number(order.discount))).toFixed(2)}</td></tr>}
-                  <tr><td colSpan={3} className="px-4 py-2 text-right font-bold">Grand Total</td><td className="px-4 py-2 text-right font-bold text-indigo-600 text-base">₹{Number(order.grand_total).toFixed(2)}</td></tr>
+                  <tr><td colSpan={3} className="px-4 py-2 text-right font-bold">Grand Total</td><td className="px-4 py-2 text-right font-bold text-teal-600 text-base">₹{Number(order.grand_total).toFixed(2)}</td></tr>
                 </tfoot>
               </table>
             </CardContent>

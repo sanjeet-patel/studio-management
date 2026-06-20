@@ -176,7 +176,7 @@ export function NewOrderForm({ data }: { data: FormData }) {
               </div>
               <div className="border-t pt-2 flex justify-between font-bold text-base">
                 <span>Grand Total</span>
-                <span className="text-indigo-600">₹{grandTotal.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+                <span className="text-teal-600">₹{grandTotal.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
               </div>
             </CardContent>
           </Card>
@@ -201,7 +201,7 @@ export function NewOrderForm({ data }: { data: FormData }) {
                 <button type="button" onClick={() => removeItem(item.id)} className="absolute top-2 right-2 text-red-400 hover:text-red-600">
                   <Trash2 className="h-4 w-4" />
                 </button>
-                <p className="text-xs font-semibold text-indigo-600 uppercase mb-3">{item.item_type} #{idx + 1}</p>
+                <p className="text-xs font-semibold text-teal-600 uppercase mb-3">{item.item_type} #{idx + 1}</p>
 
                 {item.item_type !== "ACCESSORY" && (
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
@@ -277,7 +277,7 @@ export function NewOrderForm({ data }: { data: FormData }) {
                   </div>
                   <div>
                     <Label className="text-xs">Line Total</Label>
-                    <div className="mt-1 h-8 border rounded px-2 flex items-center text-sm font-semibold text-indigo-600 bg-slate-50">
+                    <div className="mt-1 h-8 border rounded px-2 flex items-center text-sm font-semibold text-teal-600 bg-slate-50">
                       ₹{item.line_total.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
                     </div>
                   </div>
@@ -288,7 +288,7 @@ export function NewOrderForm({ data }: { data: FormData }) {
         </Card>
 
         <div className="flex justify-end">
-          <Button type="submit" className="bg-indigo-600 hover:bg-indigo-700 px-8" disabled={loading}>
+          <Button type="submit" className="bg-teal-600 hover:bg-teal-700 px-8" disabled={loading}>
             {loading ? "Creating…" : "Create Order"}
           </Button>
         </div>

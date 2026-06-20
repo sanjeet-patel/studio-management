@@ -22,7 +22,7 @@ export default async function LedgerPage({ searchParams }: { searchParams: Promi
         <h1 className="text-2xl font-bold text-slate-800">General Ledger</h1>
         <form className="flex gap-2">
           <input type="month" name="month" defaultValue={currentMonth} className="border rounded-lg px-3 py-1.5 text-sm" />
-          <button type="submit" className="bg-indigo-600 text-white rounded-lg px-3 py-1.5 text-sm">View</button>
+          <button type="submit" className="bg-teal-600 text-white rounded-lg px-3 py-1.5 text-sm">View</button>
         </form>
       </div>
 
@@ -36,8 +36,8 @@ export default async function LedgerPage({ searchParams }: { searchParams: Promi
           <p className="text-xs text-red-600 font-medium uppercase">Total Debits</p>
           <p className="text-xl font-bold text-red-700 mt-1">₹{totalDebits.toFixed(2)}</p>
         </div>
-        <div className={`rounded-xl p-4 ${closingBalance >= 0 ? "bg-indigo-50" : "bg-orange-50"}`}>
-          <p className={`text-xs font-medium uppercase ${closingBalance >= 0 ? "text-indigo-600" : "text-orange-600"}`}>Closing Balance</p>
+        <div className={`rounded-xl p-4 ${closingBalance >= 0 ? "bg-teal-50" : "bg-orange-50"}`}>
+          <p className={`text-xs font-medium uppercase ${closingBalance >= 0 ? "text-teal-600" : "text-orange-600"}`}>Closing Balance</p>
           <p className={`text-xl font-bold mt-1 ${closingBalance >= 0 ? "text-indigo-700" : "text-orange-700"}`}>₹{closingBalance.toFixed(2)}</p>
         </div>
       </div>
@@ -73,7 +73,7 @@ export default async function LedgerPage({ searchParams }: { searchParams: Promi
                 </td>
                 <td className="px-4 py-2 text-right font-mono text-red-600">{entry.debit > 0 ? entry.debit.toFixed(2) : "—"}</td>
                 <td className="px-4 py-2 text-right font-mono text-emerald-600">{entry.credit > 0 ? entry.credit.toFixed(2) : "—"}</td>
-                <td className={`px-4 py-2 text-right font-mono font-semibold ${entry.balance >= 0 ? "text-indigo-600" : "text-red-600"}`}>{entry.balance.toFixed(2)}</td>
+                <td className={`px-4 py-2 text-right font-mono font-semibold ${entry.balance >= 0 ? "text-teal-600" : "text-red-600"}`}>{entry.balance.toFixed(2)}</td>
               </tr>
             ))}
             {/* Closing row */}

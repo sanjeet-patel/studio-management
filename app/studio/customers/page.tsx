@@ -14,7 +14,7 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
         <h1 className="text-xl font-bold text-slate-800 md:text-2xl">Customers</h1>
         <Link
           href="/studio/customers/new"
-          className="flex items-center gap-1.5 bg-indigo-600 text-white px-3 py-2 rounded-xl text-sm font-medium active:bg-indigo-700 transition-colors shadow-sm"
+          className="flex items-center gap-1.5 bg-teal-600 text-white px-3 py-2 rounded-xl text-sm font-medium active:bg-teal-700 transition-colors shadow-sm"
         >
           <Plus className="h-4 w-4" /> New
         </Link>
@@ -28,18 +28,18 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
             name="search"
             defaultValue={search}
             placeholder="Search customers…"
-            className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm"
+            className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 shadow-sm"
           />
         </div>
       </form>
 
       {/* Mobile card list */}
       <div className="md:hidden space-y-2">
-        {customers.map((c) => (
-          <div key={c.id} className="bg-white rounded-2xl shadow-sm overflow-hidden">
+        {customers.map((c, i) => (
+          <div key={c.id} className={`bg-white rounded-2xl shadow-sm overflow-hidden card-lift animate-fade-up`} style={{ animationDelay: `${0.05 * i}s` }}>
             <Link href={`/studio/customers/${c.id}`} className="flex items-center gap-3 px-4 py-3.5 active:bg-slate-50">
-              <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                <span className="text-indigo-600 font-semibold text-sm">
+              <div className="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center flex-shrink-0">
+                <span className="text-teal-600 font-semibold text-sm">
                   {c.customer_name?.charAt(0).toUpperCase()}
                 </span>
               </div>
@@ -91,7 +91,7 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
             {customers.map((c) => (
               <tr key={c.id} className="hover:bg-slate-50">
                 <td className="px-4 py-3 font-medium">
-                  <Link href={`/studio/customers/${c.id}`} className="text-indigo-600 hover:underline">{c.customer_name}</Link>
+                  <Link href={`/studio/customers/${c.id}`} className="text-teal-600 hover:underline">{c.customer_name}</Link>
                 </td>
                 <td className="px-4 py-3 text-slate-500">{c.studio_name ?? "—"}</td>
                 <td className="px-4 py-3 text-slate-500">{c.mobile ?? "—"}</td>

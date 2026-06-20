@@ -6,7 +6,7 @@ export default async function AdminDashboard() {
   const stats = await getAdminStats();
 
   const cards = [
-    { label: "Total Studios", value: stats.totalTenants, icon: Building2, color: "text-indigo-600" },
+    { label: "Total Studios", value: stats.totalTenants, icon: Building2, color: "text-teal-600" },
     { label: "Active Studios", value: stats.activeTenants, icon: CheckCircle, color: "text-emerald-600" },
     { label: "On Trial", value: stats.trialTenants, icon: Clock, color: "text-amber-600" },
     { label: "Platform Revenue", value: `₹${stats.totalRevenue.toLocaleString()}`, icon: DollarSign, color: "text-blue-600" },

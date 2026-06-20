@@ -29,11 +29,11 @@ export function BillsClient({ bills, instances, currentMonth }: { bills: any[]; 
     <div>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-slate-800">Recurring Bills</h1>
-        <Button className="bg-indigo-600 hover:bg-indigo-700" onClick={() => setAdding(!adding)}><Plus className="h-4 w-4 mr-2" />Add Bill</Button>
+        <Button className="bg-teal-600 hover:bg-teal-700" onClick={() => setAdding(!adding)}><Plus className="h-4 w-4 mr-2" />Add Bill</Button>
       </div>
 
       {adding && (
-        <Card className="border-0 shadow-sm mb-4 bg-indigo-50">
+        <Card className="border-0 shadow-sm mb-4 bg-teal-50">
           <CardContent className="pt-4">
             <form onSubmit={async (e) => {
               e.preventDefault();
@@ -45,7 +45,7 @@ export function BillsClient({ bills, instances, currentMonth }: { bills: any[]; 
               <div><Label className="text-xs">Due Day</Label><Input name="due_day" type="number" min="1" max="31" defaultValue="1" className="mt-1 h-8 text-sm" /></div>
               <div><Label className="text-xs">Start Date</Label><Input name="start_date" type="date" defaultValue={new Date().toISOString().slice(0, 10)} className="mt-1 h-8 text-sm" /></div>
               <div className="col-span-full flex gap-2">
-                <Button type="submit" size="sm" className="bg-indigo-600">Save</Button>
+                <Button type="submit" size="sm" className="bg-teal-600">Save</Button>
                 <Button type="button" size="sm" variant="ghost" onClick={() => setAdding(false)}>Cancel</Button>
               </div>
             </form>
@@ -93,7 +93,7 @@ export function BillsClient({ bills, instances, currentMonth }: { bills: any[]; 
           <div className="flex gap-2 items-center">
             <Input type="month" value={month} onChange={(e) => setMonth(e.target.value)} className="h-8 text-sm w-36" />
             <Button size="sm" variant="outline" onClick={() => router.push(`/studio/bills?month=${month}`)}>View</Button>
-            <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700" onClick={handleGenerate}>Generate</Button>
+            <Button size="sm" className="bg-teal-600 hover:bg-teal-700" onClick={handleGenerate}>Generate</Button>
           </div>
         </CardHeader>
         <CardContent className="p-0">

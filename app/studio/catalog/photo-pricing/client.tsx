@@ -66,7 +66,7 @@ export function PhotoPricingClient({ data }: { data: MatrixData }) {
             <span className="text-xs text-slate-400">₹</span>
             <Input type="number" step="0.01" value={velvetRate} onChange={(e) => setVelvetRate(parseFloat(e.target.value) || 0)} className="h-7 text-sm w-20" />
             <span className="text-xs text-slate-400">/piece</span>
-            <Button size="sm" onClick={saveVelvet} className="h-7 bg-indigo-600">Save</Button>
+            <Button size="sm" onClick={saveVelvet} className="h-7 bg-teal-600">Save</Button>
           </CardContent>
         </Card>
       </div>

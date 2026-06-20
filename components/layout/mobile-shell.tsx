@@ -10,21 +10,23 @@ export function MobileShell({ tenantName, children }: { tenantName: string; chil
 
   return (
     <>
-      {/* Mobile top bar */}
       <MobileTopBar tenantName={tenantName} />
 
-      {/* Content */}
-      <main className="flex-1 overflow-auto">
-        {/* Mobile: padded for top bar + bottom nav */}
-        <div className="md:p-6 md:max-w-7xl md:mx-auto pt-14 pb-24 px-3 md:pt-6 md:pb-6 md:px-6">
+      {/* Content with page fade-in */}
+      <main className="flex-1 overflow-auto animate-fade-in" style={{ background: "var(--page-bg)" }}>
+        <div
+          className="md:p-6 md:max-w-7xl md:mx-auto px-4 md:px-6"
+          style={{
+            paddingTop: "calc(3.5rem + env(safe-area-inset-top) + 1rem)",
+            paddingBottom: "calc(5.5rem + env(safe-area-inset-bottom))",
+          }}
+        >
           {children}
         </div>
       </main>
 
-      {/* Mobile bottom nav */}
       <MobileBottomNav onMenuOpen={() => setDrawerOpen(true)} />
 
-      {/* Mobile drawer */}
       <MobileDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} tenantName={tenantName} />
     </>
   );

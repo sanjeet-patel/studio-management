@@ -25,10 +25,10 @@ export function AdminSidebar() {
   };
 
   return (
-    <aside className="flex flex-col w-64 bg-slate-900 text-white min-h-screen">
-      <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-700">
-        <div className="bg-amber-500 rounded-lg p-1.5">
-          <Shield className="h-5 w-5 text-white" />
+    <aside className="flex flex-col w-64 text-white min-h-screen" style={{ background: "var(--sidebar-bg)" }}>
+      <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10">
+        <div className="bg-amber-500/20 border border-amber-500/30 rounded-lg p-1.5">
+          <Shield className="h-5 w-5 text-amber-400" />
         </div>
         <div>
           <p className="text-sm font-semibold text-white">Albify Admin</p>
@@ -47,8 +47,8 @@ export function AdminSidebar() {
               className={cn(
                 "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors",
                 isActive
-                  ? "bg-amber-500 text-white"
-                  : "text-slate-400 hover:text-white hover:bg-slate-800"
+                  ? "bg-amber-500/20 text-amber-400 border border-amber-500/20"
+                  : "text-slate-400 hover:text-white hover:bg-white/5"
               )}
             >
               <Icon className="h-4 w-4" />
@@ -58,10 +58,10 @@ export function AdminSidebar() {
         })}
       </nav>
 
-      <div className="p-3 border-t border-slate-700">
+      <div className="p-3 border-t border-white/10">
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+          className="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
         >
           <LogOut className="h-4 w-4" />
           Sign Out

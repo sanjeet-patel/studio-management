@@ -32,7 +32,7 @@ export default function NewEmployeePage() {
             <div><Label>Monthly Salary (₹) *</Label><Input name="salary" type="number" step="0.01" required className="mt-1" /></div>
             <div><Label>Salary Due Day</Label><Input name="salary_due_day" type="number" min="1" max="31" defaultValue="1" className="mt-1" /></div>
           </div>
-          <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700" disabled={loading}>{loading ? "Saving…" : "Add Employee"}</Button>
+          <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700" disabled={loading}>{loading ? "Saving…" : "Add Employee"}</Button>
         </form>
       </CardContent></Card>
     </div>

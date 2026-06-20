@@ -20,7 +20,7 @@ export function OrderStatusSelect({ orderId, currentStatus }: { orderId: string;
               router.refresh();
             } catch { toast.error("Failed"); }
           }}
-          className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
         >
           {statuses.map((s) => <option key={s} value={s}>{s}</option>)}
         </select>

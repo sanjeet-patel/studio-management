@@ -26,7 +26,7 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
         <h1 className="text-xl font-bold text-slate-800 md:text-2xl">Orders</h1>
         <Link
           href="/studio/orders/new"
-          className="flex items-center gap-1.5 bg-indigo-600 text-white px-3 py-2 rounded-xl text-sm font-medium active:bg-indigo-700 transition-colors shadow-sm"
+          className="flex items-center gap-1.5 bg-teal-600 text-white px-3 py-2 rounded-xl text-sm font-medium active:bg-teal-700 transition-colors shadow-sm"
         >
           <Plus className="h-4 w-4" /> New
         </Link>
@@ -36,7 +36,7 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
       <form className="flex gap-2 mb-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-          <input name="search" defaultValue={search} placeholder="Search orders…" className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm" />
+          <input name="search" defaultValue={search} placeholder="Search orders…" className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 shadow-sm" />
         </div>
         <select name="status" defaultValue={status} className="border border-slate-200 rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none shadow-sm">
           <option value="">All</option>
@@ -44,22 +44,23 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
             <option key={s} value={s}>{s}</option>
           ))}
         </select>
-        <button type="submit" className="px-3 py-2.5 bg-indigo-600 text-white rounded-xl text-sm font-medium active:bg-indigo-700">Go</button>
+        <button type="submit" className="px-3 py-2.5 bg-teal-600 text-white rounded-xl text-sm font-medium active:bg-teal-700">Go</button>
       </form>
 
       {/* Mobile card list */}
       <div className="md:hidden space-y-2">
-        {orders.map((o) => {
+        {orders.map((o, idx) => {
           const c = o.customers as { customer_name: string } | null;
           return (
             <Link
               key={o.id}
               href={`/studio/orders/${o.id}`}
-              className="flex items-center gap-3 bg-white rounded-2xl px-4 py-3.5 shadow-sm active:bg-slate-50 transition-colors"
+              className="flex items-center gap-3 bg-white rounded-2xl px-4 py-3.5 shadow-sm card-lift animate-fade-up"
+              style={{ animationDelay: `${0.05 * idx}s` }}
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="font-mono text-xs font-bold text-indigo-600">{o.order_no}</span>
+                  <span className="font-mono text-xs font-bold text-teal-600">{o.order_no}</span>
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${orderStatusColor[o.order_status] ?? ""}`}>
                     {o.order_status}
                   </span>
@@ -101,7 +102,7 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
               return (
                 <tr key={o.id} className="hover:bg-slate-50">
                   <td className="px-4 py-3 font-mono text-xs font-semibold">
-                    <Link href={`/studio/orders/${o.id}`} className="text-indigo-600 hover:underline">{o.order_no}</Link>
+                    <Link href={`/studio/orders/${o.id}`} className="text-teal-600 hover:underline">{o.order_no}</Link>
                   </td>
                   <td className="px-4 py-3">{c?.customer_name ?? "—"}</td>
                   <td className="px-4 py-3 text-slate-500">{new Date(o.order_date).toLocaleDateString("en-IN")}</td>
@@ -115,7 +116,7 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
                   <td className="px-4 py-3">
                     <div className="flex gap-1">
                       <Link href={`/studio/orders/${o.id}`} className="px-2 py-1 text-xs rounded border hover:bg-slate-50">View</Link>
-                      <Link href={`/studio/orders/${o.id}/invoice`} target="_blank" className="px-2 py-1 text-xs rounded border text-indigo-600 hover:bg-indigo-50 flex items-center gap-1"><FileText className="h-3 w-3" />Invoice</Link>
+                      <Link href={`/studio/orders/${o.id}/invoice`} target="_blank" className="px-2 py-1 text-xs rounded border text-teal-600 hover:bg-teal-50 flex items-center gap-1"><FileText className="h-3 w-3" />Invoice</Link>
                     </div>
                   </td>
                 </tr>

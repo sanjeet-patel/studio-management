@@ -71,11 +71,11 @@ export function StudioSidebar({ tenantName }: { tenantName: string }) {
   };
 
   return (
-    <aside className="flex flex-col w-64 bg-slate-900 text-white min-h-screen">
+    <aside className="flex flex-col w-64 text-white min-h-screen" style={{ background: "var(--sidebar-bg)" }}>
       {/* Logo */}
-      <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-700">
-        <div className="bg-indigo-600 rounded-lg p-1.5">
-          <Camera className="h-5 w-5 text-white" />
+      <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10">
+        <div className="w-8 h-8 rounded-lg bg-teal-500/20 border border-teal-500/30 flex items-center justify-center">
+          <span className="text-teal-400 font-bold text-sm">A</span>
         </div>
         <div className="overflow-hidden">
           <p className="text-sm font-semibold text-white truncate">{tenantName}</p>
@@ -101,8 +101,8 @@ export function StudioSidebar({ tenantName }: { tenantName: string }) {
                     className={cn(
                       "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors",
                       isActive
-                        ? "bg-indigo-600 text-white"
-                        : "text-slate-400 hover:text-white hover:bg-slate-800"
+                        ? "bg-teal-500/20 text-teal-400 border border-teal-500/20"
+                        : "text-slate-400 hover:text-white hover:bg-white/5"
                     )}
                   >
                     <Icon className="h-4 w-4 flex-shrink-0" />
@@ -116,10 +116,10 @@ export function StudioSidebar({ tenantName }: { tenantName: string }) {
       </nav>
 
       {/* Logout */}
-      <div className="p-3 border-t border-slate-700">
+      <div className="p-3 border-t border-white/10">
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+          className="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
         >
           <LogOut className="h-4 w-4" />
           Sign Out

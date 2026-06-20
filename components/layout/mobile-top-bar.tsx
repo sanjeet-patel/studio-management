@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { ArrowLeft, Camera, Bell } from "lucide-react";
+import { ArrowLeft, Bell } from "lucide-react";
 
 const pageTitles: Record<string, string> = {
   "/studio/dashboard": "Dashboard",
@@ -24,12 +24,7 @@ const pageTitles: Record<string, string> = {
   "/studio/settings": "Settings",
 };
 
-const rootPaths = [
-  "/studio/dashboard",
-  "/studio/customers",
-  "/studio/orders",
-  "/studio/employees",
-];
+const rootPaths = ["/studio/dashboard", "/studio/customers", "/studio/orders"];
 
 function getTitle(pathname: string): string {
   if (pageTitles[pathname]) return pageTitles[pathname];
@@ -39,46 +34,49 @@ function getTitle(pathname: string): string {
   if (pathname.includes("/new")) return "New";
   if (pathname.includes("/edit")) return "Edit";
   if (pathname.includes("/invoice")) return "Invoice";
-  return "Studio";
+  return "Albify";
 }
 
 export function MobileTopBar({ tenantName }: { tenantName: string }) {
   const pathname = usePathname();
   const router = useRouter();
   const title = getTitle(pathname);
-  const isRoot = rootPaths.includes(pathname) || pathname === "/studio/dashboard";
+  const isRoot = rootPaths.includes(pathname);
   const showBack = !isRoot && pathname !== "/studio/dashboard";
 
   return (
-    <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-indigo-600 text-white safe-area-top">
+    <header
+      className="md:hidden fixed top-0 left-0 right-0 z-50 safe-area-top"
+      style={{ background: "var(--sidebar-bg)" }}
+    >
       <div className="flex items-center h-14 px-2">
         {showBack ? (
           <button
             onClick={() => router.back()}
-            className="p-2 rounded-full active:bg-indigo-500 transition-colors mr-1"
+            className="p-2 rounded-full active:bg-white/10 transition-colors mr-1"
             aria-label="Back"
           >
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowLeft className="h-5 w-5 text-white" />
           </button>
         ) : (
-          <div className="p-2 mr-1">
-            <div className="bg-white/20 rounded-full p-1">
-              <Camera className="h-4 w-4 text-white" />
+          <div className="flex items-center gap-2 px-2 mr-1">
+            <div className="w-7 h-7 rounded-lg bg-teal-500/20 flex items-center justify-center">
+              <span className="text-teal-400 font-bold text-xs">A</span>
             </div>
           </div>
         )}
 
         <div className="flex-1 min-w-0">
-          <h1 className="text-base font-semibold truncate leading-tight">
+          <h1 className="text-sm font-semibold text-white truncate leading-tight">
             {showBack ? title : tenantName}
           </h1>
           {!showBack && (
-            <p className="text-[10px] text-indigo-200 leading-tight">Albify</p>
+            <p className="text-[10px] text-slate-400 leading-tight">Albify</p>
           )}
         </div>
 
-        <button className="p-2 rounded-full active:bg-indigo-500 transition-colors relative">
-          <Bell className="h-5 w-5" />
+        <button className="p-2 rounded-full active:bg-white/10 transition-colors relative">
+          <Bell className="h-5 w-5 text-slate-300" />
         </button>
       </div>
     </header>

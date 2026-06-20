@@ -51,7 +51,7 @@ export function CatalogPage({ title, items, extraHeaders = [], extraCells, extra
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-slate-800">{title}</h1>
         {!adding && (
-          <Button className="bg-indigo-600 hover:bg-indigo-700" onClick={() => setAdding(true)}>
+          <Button className="bg-teal-600 hover:bg-teal-700" onClick={() => setAdding(true)}>
             <Plus className="h-4 w-4 mr-2" />Add New
           </Button>
         )}
@@ -70,7 +70,7 @@ export function CatalogPage({ title, items, extraHeaders = [], extraCells, extra
           <tbody className="divide-y">
             {/* Add row */}
             {adding && (
-              <tr className="bg-indigo-50">
+              <tr className="bg-teal-50">
                 <td colSpan={extraHeaders.length + 3} className="px-4 py-3">
                   <form onSubmit={handleAdd} className="flex flex-wrap gap-3 items-end">
                     <div>
@@ -82,7 +82,7 @@ export function CatalogPage({ title, items, extraHeaders = [], extraCells, extra
                       <label className="text-xs text-slate-500 block mb-1">Sort Order</label>
                       <Input name="sort_order" type="number" defaultValue="0" className="h-8 text-sm w-20" />
                     </div>
-                    <Button type="submit" size="sm" className="bg-indigo-600" disabled={loading}>{loading ? "…" : <Check className="h-4 w-4" />}</Button>
+                    <Button type="submit" size="sm" className="bg-teal-600" disabled={loading}>{loading ? "…" : <Check className="h-4 w-4" />}</Button>
                     <Button type="button" size="sm" variant="ghost" onClick={() => setAdding(false)}><X className="h-4 w-4" /></Button>
                   </form>
                 </td>
@@ -102,7 +102,7 @@ export function CatalogPage({ title, items, extraHeaders = [], extraCells, extra
                         <label className="text-xs text-slate-500 block mb-1">Sort Order</label>
                         <Input name="sort_order" type="number" defaultValue={item.sort_order ?? 0} className="h-8 text-sm w-20" />
                       </div>
-                      <Button type="submit" size="sm" className="bg-indigo-600" disabled={loading}>{loading ? "…" : <Check className="h-4 w-4" />}</Button>
+                      <Button type="submit" size="sm" className="bg-teal-600" disabled={loading}>{loading ? "…" : <Check className="h-4 w-4" />}</Button>
                       <Button type="button" size="sm" variant="ghost" onClick={() => setEditId(null)}><X className="h-4 w-4" /></Button>
                     </form>
                   </td>

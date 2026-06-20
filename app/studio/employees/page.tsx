@@ -10,7 +10,7 @@ export default async function EmployeesPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-slate-800">Employees</h1>
-        <Link href="/studio/employees/new"><Button className="bg-indigo-600 hover:bg-indigo-700"><Plus className="h-4 w-4 mr-2" />Add Employee</Button></Link>
+        <Link href="/studio/employees/new"><Button className="bg-teal-600 hover:bg-teal-700"><Plus className="h-4 w-4 mr-2" />Add Employee</Button></Link>
       </div>
       <div className="bg-white rounded-xl border overflow-hidden shadow-sm">
         <table className="w-full text-sm">

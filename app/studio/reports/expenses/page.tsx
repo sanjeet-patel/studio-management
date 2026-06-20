@@ -12,7 +12,7 @@ export default async function ExpensesReportPage({ searchParams }: { searchParam
         <h1 className="text-2xl font-bold text-slate-800">Expense Report</h1>
         <form className="flex gap-2">
           <input type="month" name="month" defaultValue={currentMonth} className="border rounded-lg px-3 py-1.5 text-sm" />
-          <button type="submit" className="bg-indigo-600 text-white rounded-lg px-3 py-1.5 text-sm">View</button>
+          <button type="submit" className="bg-teal-600 text-white rounded-lg px-3 py-1.5 text-sm">View</button>
         </form>
       </div>
 

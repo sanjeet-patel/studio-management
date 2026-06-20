@@ -22,7 +22,7 @@ export function GenerateSalariesForm({ currentMonth }: { currentMonth?: string }
         }}
       >View</Button>
       <Button
-        className="bg-indigo-600 hover:bg-indigo-700"
+        className="bg-teal-600 hover:bg-teal-700"
         size="sm"
         disabled={loading}
         onClick={async () => {

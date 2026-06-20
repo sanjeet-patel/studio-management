@@ -64,7 +64,7 @@ export function SettingsForm({ tenant }: { tenant: Tenant | null }) {
           </CardContent>
         </Card>
 
-        <Button type="submit" className="bg-indigo-600 hover:bg-indigo-700" disabled={loading}>{loading ? "Saving…" : "Save Settings"}</Button>
+        <Button type="submit" className="bg-teal-600 hover:bg-teal-700" disabled={loading}>{loading ? "Saving…" : "Save Settings"}</Button>
       </form>
     </div>
   );

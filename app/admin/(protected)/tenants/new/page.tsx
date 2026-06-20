@@ -60,7 +60,7 @@ export default function NewTenantPage() {
               <Label>Password</Label>
               <Input name="owner_password" type="password" placeholder="Min 8 characters" required minLength={8} className="mt-1" />
             </div>
-            <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700" disabled={loading}>
+            <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700" disabled={loading}>
               {loading ? "Creating…" : "Create Studio"}
             </Button>
           </form>

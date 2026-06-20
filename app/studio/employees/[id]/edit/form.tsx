@@ -34,7 +34,7 @@ export function EditEmployeeForm({ employee: e }: { employee: Employee }) {
             <div><Label>Due Day</Label><Input name="salary_due_day" type="number" min="1" max="31" defaultValue={e.salary_due_day} className="mt-1" /></div>
           </div>
           <div><Label>Status</Label><select name="status" defaultValue={e.status} className="mt-1 w-full border rounded-lg px-3 py-2 text-sm"><option value="active">Active</option><option value="inactive">Inactive</option></select></div>
-          <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700" disabled={loading}>{loading ? "Saving…" : "Update Employee"}</Button>
+          <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700" disabled={loading}>{loading ? "Saving…" : "Update Employee"}</Button>
         </form>
       </CardContent></Card>
     </div>

@@ -6,7 +6,7 @@ export default async function StudioDashboard() {
   const stats = await getDashboardStats();
 
   const todayCards = [
-    { label: "Today's Orders", value: stats.todays_orders, icon: ShoppingBag, color: "text-indigo-600", bg: "bg-indigo-50", href: "/studio/orders" },
+    { label: "Today's Orders", value: stats.todays_orders, icon: ShoppingBag, color: "text-teal-600", bg: "bg-teal-50", href: "/studio/orders" },
     { label: "Today's Collection", value: `₹${stats.todays_collection.toLocaleString()}`, icon: DollarSign, color: "text-emerald-600", bg: "bg-emerald-50", href: "/studio/orders" },
   ];
 
@@ -18,10 +18,10 @@ export default async function StudioDashboard() {
   ];
 
   const quickLinks = [
-    { href: "/studio/orders/new", label: "New Order", icon: Plus, color: "bg-indigo-600" },
+    { href: "/studio/orders/new", label: "New Order", icon: Plus, color: "bg-teal-600" },
     { href: "/studio/customers/new", label: "New Customer", icon: Users, color: "bg-emerald-600" },
-    { href: "/studio/orders", label: "All Orders", icon: ShoppingBag, color: "bg-amber-500" },
-    { href: "/studio/reports/profit-loss", label: "P&L Report", icon: TrendingUp, color: "bg-blue-600" },
+    { href: "/studio/orders", label: "All Orders", icon: ShoppingBag, color: "bg-slate-700" },
+    { href: "/studio/reports/profit-loss", label: "P&L Report", icon: TrendingUp, color: "bg-amber-500" },
   ];
 
   return (
@@ -30,13 +30,13 @@ export default async function StudioDashboard() {
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Today</h2>
         <div className="grid grid-cols-2 gap-3">
-          {todayCards.map((card) => {
+          {todayCards.map((card, i) => {
             const Icon = card.icon;
             return (
               <Link
                 key={card.label}
                 href={card.href}
-                className="bg-white rounded-2xl p-4 shadow-sm active:scale-[0.98] transition-transform"
+                className={`bg-white rounded-2xl p-4 shadow-sm card-lift animate-fade-up stagger-${i + 1}`}
               >
                 <div className={`inline-flex p-2 rounded-xl ${card.bg} mb-3`}>
                   <Icon className={`h-5 w-5 ${card.color}`} />
@@ -50,16 +50,16 @@ export default async function StudioDashboard() {
       </section>
 
       {/* Quick actions */}
-      <section>
+      <section className="animate-fade-up stagger-3">
         <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Quick Actions</h2>
         <div className="grid grid-cols-4 gap-2">
-          {quickLinks.map((link) => {
+          {quickLinks.map((link, i) => {
             const Icon = link.icon;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex flex-col items-center gap-2 active:scale-95 transition-transform"
+                className={`flex flex-col items-center gap-2 active:scale-95 transition-transform animate-scale-in stagger-${i + 3}`}
               >
                 <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl ${link.color} flex items-center justify-center shadow-sm`}>
                   <Icon className="h-5 w-5 text-white" />
@@ -72,7 +72,7 @@ export default async function StudioDashboard() {
       </section>
 
       {/* Alerts */}
-      <section>
+      <section className="animate-fade-up stagger-4">
         <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Alerts</h2>
         <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
           {alertCards.map((card, i) => {

@@ -29,7 +29,7 @@ export default async function CustomerDuesPage() {
             {dues.map((d) => (
               <tr key={d.id} className="hover:bg-slate-50">
                 <td className="px-4 py-3 font-medium">{d.customer}</td>
-                <td className="px-4 py-3 font-mono text-xs text-indigo-600">{d.order_no}</td>
+                <td className="px-4 py-3 font-mono text-xs text-teal-600">{d.order_no}</td>
                 <td className="px-4 py-3 text-right">₹{d.grand_total.toFixed(2)}</td>
                 <td className="px-4 py-3 text-right font-bold text-red-600">₹{d.outstanding.toFixed(2)}</td>
                 <td className="px-4 py-3 text-slate-500">{d.mobile || "—"}</td>

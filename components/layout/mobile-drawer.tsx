@@ -75,17 +75,17 @@ export function MobileDrawer({ open, onClose, tenantName }: MobileDrawerProps) {
         )}
       >
         {/* Header */}
-        <div className="flex items-center gap-3 px-4 py-4 bg-indigo-600 safe-area-top">
-          <div className="bg-white/20 rounded-full p-1.5">
-            <Camera className="h-5 w-5 text-white" />
+        <div className="flex items-center gap-3 px-4 py-4 safe-area-top" style={{ background: "var(--sidebar-bg)" }}>
+          <div className="w-8 h-8 rounded-lg bg-teal-500/20 border border-teal-500/30 flex items-center justify-center">
+            <span className="text-teal-400 font-bold text-sm">A</span>
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-white truncate">{tenantName}</p>
-            <p className="text-xs text-indigo-200">Albify — Studio Management</p>
+            <p className="text-xs text-slate-400">Albify — Studio Management</p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full active:bg-indigo-500 transition-colors"
+            className="p-2 rounded-full active:bg-teal-500 transition-colors"
           >
             <X className="h-5 w-5 text-white" />
           </button>
@@ -108,18 +108,18 @@ export function MobileDrawer({ open, onClose, tenantName }: MobileDrawerProps) {
                     onClick={onClose}
                     className={cn(
                       "flex items-center gap-3 px-4 py-3.5 active:bg-slate-50 transition-colors",
-                      isActive ? "bg-indigo-50" : ""
+                      isActive ? "bg-teal-50" : ""
                     )}
                   >
                     <div className={cn(
                       "w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0",
-                      isActive ? "bg-indigo-600" : "bg-slate-100"
+                      isActive ? "bg-teal-600" : "bg-slate-100"
                     )}>
-                      <Icon className={cn("h-4 w-4", isActive ? "text-white" : "text-slate-600")} />
+                      <Icon className={cn("h-4 w-4", isActive ? "text-white" : "text-slate-500")} />
                     </div>
                     <span className={cn(
                       "flex-1 text-sm font-medium",
-                      isActive ? "text-indigo-600" : "text-slate-700"
+                      isActive ? "text-teal-600" : "text-slate-700"
                     )}>
                       {item.label}
                     </span>

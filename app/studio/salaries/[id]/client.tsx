@@ -78,7 +78,7 @@ export function SalaryCycleClient({ cycle }: { cycle: any }) {
                 </div>
                 <div><Label className="text-xs">Reason</Label><Input name="reason" required className="mt-1 h-8 text-sm" placeholder="e.g. Overtime, Paid Leave" /></div>
                 <div><Label className="text-xs">Amount (₹)</Label><Input name="amount" type="number" step="0.01" required className="mt-1 h-8 text-sm" /></div>
-                <Button type="submit" size="sm" className="w-full bg-indigo-600" disabled={adjLoading}>{adjLoading ? "…" : "Add Adjustment"}</Button>
+                <Button type="submit" size="sm" className="w-full bg-teal-600" disabled={adjLoading}>{adjLoading ? "…" : "Add Adjustment"}</Button>
               </form>
             </CardContent>
           </Card>

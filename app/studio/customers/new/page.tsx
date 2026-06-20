@@ -45,7 +45,7 @@ export default function NewCustomerPage() {
               <div><Label>Address</Label><Input name="address" className="mt-1" /></div>
             </div>
             <div><Label>Notes</Label><Textarea name="notes" className="mt-1" rows={2} /></div>
-            <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700" disabled={loading}>
+            <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700" disabled={loading}>
               {loading ? "Saving…" : "Create Customer"}
             </Button>
           </form>
