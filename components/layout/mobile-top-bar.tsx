@@ -73,7 +73,7 @@ export function MobileTopBar({ tenantName }: { tenantName: string }) {
             {showBack ? title : tenantName}
           </h1>
           {!showBack && (
-            <p className="text-[10px] text-indigo-200 leading-tight">Studio Management</p>
+            <p className="text-[10px] text-indigo-200 leading-tight">Albify</p>
           )}
         </div>
 

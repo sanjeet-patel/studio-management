@@ -79,7 +79,7 @@ export function StudioSidebar({ tenantName }: { tenantName: string }) {
         </div>
         <div className="overflow-hidden">
           <p className="text-sm font-semibold text-white truncate">{tenantName}</p>
-          <p className="text-xs text-slate-400">Studio Management</p>
+          <p className="text-xs text-slate-400">Albify — Studio Management</p>
         </div>
       </div>
 

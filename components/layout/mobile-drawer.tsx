@@ -81,7 +81,7 @@ export function MobileDrawer({ open, onClose, tenantName }: MobileDrawerProps) {
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-white truncate">{tenantName}</p>
-            <p className="text-xs text-indigo-200">Studio Management</p>
+            <p className="text-xs text-indigo-200">Albify — Studio Management</p>
           </div>
           <button
             onClick={onClose}

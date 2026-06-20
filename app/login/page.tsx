@@ -39,7 +39,7 @@ export default function LoginPage() {
               <Camera className="h-7 w-7" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold text-slate-800">Studio Login</CardTitle>
+          <CardTitle className="text-2xl font-bold text-slate-800">Welcome to Albify</CardTitle>
           <p className="text-sm text-slate-500 mt-1">Sign in to your studio account</p>
         </CardHeader>
         <CardContent className="pt-4">

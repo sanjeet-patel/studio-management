@@ -31,7 +31,7 @@ export function AdminSidebar() {
           <Shield className="h-5 w-5 text-white" />
         </div>
         <div>
-          <p className="text-sm font-semibold text-white">NSMS Admin</p>
+          <p className="text-sm font-semibold text-white">Albify Admin</p>
           <p className="text-xs text-slate-400">Super Administrator</p>
         </div>
       </div>

@@ -6,13 +6,13 @@ import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Studio Management",
-  description: "Professional studio management for photo studios",
+  title: "Albify — Studio Management",
+  description: "Albify — Professional photo studio management",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "StudioMS",
+    title: "Albify",
   },
   formatDetection: { telephone: false },
 };

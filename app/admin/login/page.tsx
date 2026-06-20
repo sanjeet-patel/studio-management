@@ -39,7 +39,7 @@ export default function AdminLoginPage() {
               <Shield className="h-7 w-7 text-white" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold text-white">Super Admin</CardTitle>
+          <CardTitle className="text-2xl font-bold text-white">Albify Admin</CardTitle>
           <p className="text-sm text-slate-400 mt-1">Platform administration panel</p>
         </CardHeader>
         <CardContent className="pt-4">
@@ -51,7 +51,7 @@ export default function AdminLoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@nsms.com"
+                placeholder="admin@albify.shop"
                 required
                 className="mt-1 bg-slate-700 border-slate-600 text-white placeholder:text-slate-500"
               />
