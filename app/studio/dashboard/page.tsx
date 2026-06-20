@@ -25,7 +25,7 @@ export default async function StudioDashboard() {
   ];
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 pt-1">
       {/* Today's snapshot */}
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Today</h2>

@@ -17,7 +17,7 @@ export function MobileShell({ tenantName, children }: { tenantName: string; chil
         <div
           className="md:p-6 md:max-w-7xl md:mx-auto px-4 md:px-6"
           style={{
-            paddingTop: "calc(3.5rem + env(safe-area-inset-top) + 1rem)",
+            paddingTop: "calc(3.5rem + env(safe-area-inset-top) + 1.5rem)",
             paddingBottom: "calc(5.5rem + env(safe-area-inset-bottom))",
           }}
         >
