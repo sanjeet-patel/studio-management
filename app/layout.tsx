@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { InstallBanner } from "@/components/pwa/install-banner";
+
+const APP_NAME = "Albify";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -11,15 +14,26 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-  title: "Albify — Studio Management",
+  applicationName: APP_NAME,
+  title: {
+    default: "Albify — Studio Management",
+    template: "%s — Albify",
+  },
   description: "Albify — Professional photo studio management",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Albify",
+    title: APP_NAME,
   },
   formatDetection: { telephone: false },
+  icons: {
+    icon: [
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 export const viewport: Viewport = {
@@ -38,10 +52,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <link rel="apple-touch-icon" href="/icons/icon.svg" />
+        <meta name="apple-mobile-web-app-title" content={APP_NAME} />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
       </head>
       <body className={`${lexend.variable} font-lexend`}>
         {children}
+        <InstallBanner />
         <Toaster richColors position="top-center" />
       </body>
     </html>
